@@ -1,0 +1,23 @@
+<!-- store/templates/store/book_list.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Danh sách sách</h1>
+<div class="row">
+    {% for book in books %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">{{ book.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Tác giả: {{ book.author }}</h6>
+                <p class="card-text">{{ book.description|truncatewords:20 }}</p>
+                <p class="card-text"><strong>Giá: {{ book.price }} VND</strong></p>
+                <a href="{% url 'store:checkout' %}" class="btn btn-primary">Mua ngay</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p>Chưa có sách nào trong cửa hàng.</p>
+    {% endfor %}
+</div>
+{% endblock %}

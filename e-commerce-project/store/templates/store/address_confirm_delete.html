@@ -1,0 +1,12 @@
+<!-- store/templates/store/address_confirm_delete.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Xác nhận xóa địa chỉ</h2>
+<p>Bạn có chắc chắn muốn xóa địa chỉ của "{{ address.full_name }}"?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Xác nhận xóa</button>
+    <a href="{% url 'store:address_list' %}" class="btn btn-secondary">Hủy</a>
+</form>
+{% endblock %}

@@ -1,0 +1,24 @@
+<!-- store/templates/store/address_list.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Địa chỉ giao hàng của tôi</h2>
+<a href="{% url 'store:address_create' %}" class="btn btn-success mb-3">Thêm địa chỉ mới</a>
+<div class="list-group">
+    {% for address in addresses %}
+        <div class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{ address.full_name }}</h5>
+                <div>
+                    <a href="{% url 'store:address_update' address.pk %}" class="btn btn-sm btn-warning">Sửa</a>
+                    <a href="{% url 'store:address_delete' address.pk %}" class="btn btn-sm btn-danger">Xóa</a>
+                </div>
+            </div>
+            <p class="mb-1">{{ address.street_address }}, {{ address.city }}</p>
+            <small>SĐT: {{ address.phone_number }}</small>
+        </div>
+    {% empty %}
+        <p>Bạn chưa có địa chỉ nào. Hãy thêm một địa chỉ mới.</p>
+    {% endfor %}
+</div>
+{% endblock %}

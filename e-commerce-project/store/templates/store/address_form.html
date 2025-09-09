@@ -1,0 +1,11 @@
+<!-- store/templates/store/address_form.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>{% if form.instance.pk %}Sửa địa chỉ{% else %}Thêm địa chỉ mới{% endif %}</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Lưu địa chỉ</button>
+</form>
+{% endblock %}
